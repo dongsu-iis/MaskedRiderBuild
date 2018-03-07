@@ -4,10 +4,6 @@ using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Microsoft.VisualBasic.FileIO;
-using System.IO;
-using System.Configuration;
-using System.Reflection;
-using System.Drawing;
 
 namespace RabbitTank
 {
@@ -176,7 +172,7 @@ namespace RabbitTank
             {
                 MessageBox.Show("エラー： " + ex);
             }
-            
+
         }
         #endregion
 
@@ -294,7 +290,7 @@ namespace RabbitTank
             }
 
             //参照の整合性チェック
-            allReference.References.ForEach(allRef => 
+            allReference.References.ForEach(allRef =>
             {
                 if (!allProject.Projecs.Exists(pj => pj.Name == allRef.Name))
                 {
@@ -337,7 +333,7 @@ namespace RabbitTank
                     if (pj.IsBuildable && !pj.IsBuilt)
                     {
                         //プロジェクトファイルをバックアップ
-                        FileSystem.CopyFile(pj.Path, pj.Path + "_" + DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss-fff")+ ".bak", true);
+                        FileSystem.CopyFile(pj.Path, pj.Path + "_" + DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss-fff") + ".bak", true);
 
                         //プロジェクトファイルの編集
                         Xdoc xdoc = new Xdoc(pj.Path);
@@ -379,7 +375,7 @@ namespace RabbitTank
                     // プロジェクトがビルドしてOKかを判定する
                     CheckBuildable checkBuildable = new CheckBuildable();
                     pj.IsBuildable = checkBuildable.ProjectIsBuildable(pj, allReference.References);
-                    
+
                     //ビルド済みプロジェクト数を更新
                     noBuiltCount = allProject.Projecs.Where(x => !x.IsBuilt).Count();
                     isBuiltCount = allProject.Projecs.Where(x => x.IsBuilt).Count();

@@ -16,10 +16,7 @@ namespace RabbitTank
         [DisplayName("ビルド済み")]
         public bool IsBuilt { get; set; }
 
-        public Reference(string Name)
-        {
-            this.Name = Name;
-        }
+        public Reference(string Name) => this.Name = Name;
 
         public Reference()
         {

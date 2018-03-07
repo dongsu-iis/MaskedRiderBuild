@@ -11,13 +11,10 @@ namespace RabbitTank
     {
         private IEnumerable<string> _Files;
 
-        public IEnumerable<string> Files
-        {
-            get {return _Files; }
-        }
+        public IEnumerable<string> Files => _Files;
 
 
-        public bool FilesExists(string path,string searchString)
+        public bool FilesExists(string path, string searchString)
         {
             _Files = Directory.EnumerateFiles(path, searchString, SearchOption.AllDirectories);
             bool result = _Files.Count() > 0 ? true : false;

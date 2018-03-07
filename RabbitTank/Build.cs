@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using System.Xml;
 
 namespace RabbitTank
 {
@@ -13,13 +12,13 @@ namespace RabbitTank
         private string MSBuildPath = ConfigurationManager.AppSettings["MSBuildPath"];
         //@"C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe";
 
-        public int Execute(string prjName, string projectFilePath, string outputDirPath,string logDirPath)
+        public int Execute(string prjName, string projectFilePath, string outputDirPath, string logDirPath)
         {
 
             //ビルド結果
             int buildResultCode;
             string logFilePath;
-            logFilePath = Path.Combine(logDirPath, prjName+ "_" + DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss-fff") + ".log");
+            logFilePath = Path.Combine(logDirPath, prjName + "_" + DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss-fff") + ".log");
 
             using (Process p = new Process())
             {
