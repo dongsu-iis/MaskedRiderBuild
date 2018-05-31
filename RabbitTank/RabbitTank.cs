@@ -338,15 +338,6 @@ namespace RabbitTank
                         //プロジェクトファイルの編集
                         Xdoc xdoc = new Xdoc(pj.Path);
 
-                        //ライセンスファイルコピー
-                        //File licenseFiles = new File();
-                        //if (licenseFiles.FilesExists(Path.GetDirectoryName(pj.Path), "licenses.licx"))
-                        //{
-                        //    string licenseFilePath = ConfigurationManager.AppSettings["licenseFile"];
-                        //    FileSystem.CopyFile(licenseFiles.Files.FirstOrDefault(), licenseFiles.Files.FirstOrDefault() + "_" + DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss-fff") + ".bak", true);
-                        //    FileSystem.CopyFile(licenseFilePath, licenseFiles.Files.FirstOrDefault(), true);
-                        //}
-
                         //AXJDStatusBarだけ32bitでコンパイル
                         if (pj.Name == "AXJDStatusBar")
                         {

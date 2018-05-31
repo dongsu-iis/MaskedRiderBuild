@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using Newtonsoft.Json;
 
-
 namespace RabbitTank
 {
 
@@ -120,10 +119,10 @@ namespace RabbitTank
                 //参照を置き換え
                 convertRef.ForEach(x => 
                 {
-                   if(x.from == name)
+                   if(x.From == name)
                     {
-                        i.SetAttributeValue("Include", x.to);
-                        var hintPath = Path.Combine(piRefPath, x.to + ".dll");
+                        i.SetAttributeValue("Include", x.To);
+                        var hintPath = Path.Combine(piRefPath, x.To + ".dll");
 
                         //参照パス
                         if (i.Element(nspace + "HintPath") == null)
@@ -138,11 +137,11 @@ namespace RabbitTank
                         //名前
                         if (i.Element(nspace + "Name") == null)
                         {
-                            i.Add(new XElement(nspace + "Name", x.to));
+                            i.Add(new XElement(nspace + "Name", x.To));
                         }
                         else
                         {
-                            i.Element(nspace + "Name").SetValue(x.to);
+                            i.Element(nspace + "Name").SetValue(x.To);
                         }
 
                     }
@@ -218,7 +217,7 @@ namespace RabbitTank
         {
             IEnumerable<XElement> xReference = xdocument.Root.Descendants(nspace + "Reference")
                                     // System系の参照を除外
-                                    .Where(x => list.Any(f => x.Attribute("Include").Value.StartsWith(f.name.ToString())) == false)
+                                    .Where(x => list.Any(f => x.Attribute("Include").Value.StartsWith(f.Name.ToString())) == false)
                                     .Select(x => x);
 
             return xReference;

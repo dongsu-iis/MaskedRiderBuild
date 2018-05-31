@@ -3,13 +3,13 @@
 
     public class FilterList
     {
-        public string name { get; set; }
+        public string Name { get; set; }
     }
 
     public class ConvertList
     {
-        public string from { get; set; }
-        public string to { get; set; }
+        public string From { get; set; }
+        public string To { get; set; }
     }
 
 }
