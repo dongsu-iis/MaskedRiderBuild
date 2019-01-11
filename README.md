@@ -1,27 +1,27 @@
 # README
 
-## �T�v
-�I�������t�H���_�z����VB��C#�̃v���W�F�N�g��ΏۂɎ����r���h���s���B  
-�r���h�c�[����MsBuild��p����B
+## 概要
+選択したフォルダ配下のVBとC#のプロジェクトを対象に自動ビルドを行う。  
+ビルドツールはMsBuildを用いる。
 
 
-�@
-## �@�\
-1. �w�肳�ꂽ�t�H���_�z���i�T�u�t�H���_���܂ށj�̃v���W�F�N�g��ΏۂɁA�r���h���s��
-2. ��ʂŎw�肳�ꂽ�u.NET Framework�̃o�[�W�����v�Ɓu�R���p�C�����郂�W���[���̃r�b�g���v��S�v���W�F�N�g�ɓK�p����
-3. �v���W�F�N�g���m�̎Q�ƈˑ������m���A�r���h���Ԃ������I�ɕ��ёւ���
-4. �r���h���ʂ���ʈꗗ�ɕ\�����A�r���h���O���o�͂���
+　
+## 機能
+1. 指定されたフォルダ配下（サブフォルダも含む）のプロジェクトを対象に、ビルドを行う
+2. 画面で指定された「.NET Frameworkのバージョン」と「コンパイルするモジュールのビット数」を全プロジェクトに適用する
+3. プロジェクト同士の参照依存を検知し、ビルド順番を自動的に並び替える
+4. ビルド結果を画面一覧に表示し、ビルドログを出力する
 
 
-�@
-## �����ݒ�
-�{�c�[���Ɠ�������ݒ�t�@�C���iRabbitTank.exe.config�j��appSettings�����[�U�[���ɍ��킹�ď��������Ă��������B  
+　
+## 初期設定
+本ツールと同梱する設定ファイル（RabbitTank.exe.config）のappSettingsをユーザー環境に合わせて書き換えてください。  
 
 
-��j  
-```xml:App.config
+例）  
+```xml
 <appSettings>
-    <!-- �Q�ƈˑ��͌��m���Ȃ����߂̏��O����Q�ƃ��X�g -->
+    <!-- 参照依存は検知しないための除外する参照リスト -->
     <add key="json_system_list" value="[
          {'name':'System'},
          {'name':'CrystalDecisions'},
@@ -36,8 +36,8 @@
          ]
          "/>
     
-    <!-- �Q�ƈˑ��͌��m���Ȃ����߂̏��O����Q�ƃ��X�g 
-         ���̃��X�g�Ɋ܂܂�Ă��Ȃ��Q�Ƃ̃p�X�͏o�̓t�H���_�ɂȂ�-->
+    <!-- 参照依存は検知しないための除外する参照リスト 
+         このリストに含まれていない参照のパスは出力フォルダになる-->
     <add key="json_system_list_partial" value="[
          {'name':'System'},
          {'name':'Microsoft.VisualBasic'},
@@ -50,18 +50,18 @@
          "/>
 
 
-    <!--�Q�Ƃ̒u���������X�g�idll�o�[�W�����A�b�v�̍ۂɗp����Ƃ����j-->
+    <!--参照の置き換えリスト（dllバージョンアップの際に用いるといい）-->
     <add key="json_convert_ref" value="[
          {'from':'Oracle.DataAccess','to':'Oracle.DataAccess'},
          ]
          "/>
 
-    <!-- MSBuild�̃p�X�i���g��Visual Studio�t����MSBuild���w�肷��j -->
+    <!-- MSBuildのパス（自身のVisual Studio付属のMSBuildを指定する） -->
     <add key="MSBuildPath" value="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"/>
 </appSettings>
 ```
 
 
-�@
-## ���̑�
-�܂��A�Ƃ肠�����g���Č��Ă��������B
+　
+## その他
+まぁ、とりあえず使って見てください。
