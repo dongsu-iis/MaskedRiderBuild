@@ -29,6 +29,8 @@ namespace RabbitTank
         private AllProject allProject;
         //ファイル検索オブジェクト
         private File file;
+
+        private string cantBuildPrjName;
         #endregion
 
         #region --------- コンストラクタ ---------
@@ -131,7 +133,7 @@ namespace RabbitTank
                 //参照が存在の整合性チェックを実施
                 if (!CanBuildCheck())
                 {
-                    MessageBox.Show("対象フォルダのプロジェクトの参照が不足しているぜ\n もう一度プロジェクトの参照を見直してくれ　(；・∀・)");
+                    MessageBox.Show("対象フォルダのプロジェクトの参照が不足しているぜ\n もう一度プロジェクトの参照を見直してくれ　(；・∀・)" + cantBuildPrjName);
                     dataGridViewProject.DataSource = allProject.Projecs;
                     return;
                 }
@@ -294,6 +296,7 @@ namespace RabbitTank
             {
                 if (!allProject.Projecs.Exists(pj => pj.Name == allRef.Name))
                 {
+                    cantBuildPrjName = cantBuildPrjName + allRef.Name + Environment.NewLine;
                     result = false;
                 }
             });
